@@ -9,6 +9,14 @@ import FormAddOns from "./components/form-add-ons/FormAddOns.tsx";
 import FormSelectPlan from "./components/form-select-plan/FormSelectPlan.tsx";
 import { Provider } from "react-redux";
 import { store } from "./store/store.ts";
+import "./index.css";
+
+export enum RoutePath {
+  STEP_1 = "/your-info",
+  STEP_2 = "/select-plan",
+  STEP_3 = "/add-ons",
+  STEP_4 = "/summary",
+}
 
 const router = createBrowserRouter([
   {
@@ -17,16 +25,16 @@ const router = createBrowserRouter([
     errorElement: <PageNotFound />,
     children: [
       {
-        path: "/your-info",
+        path: RoutePath.STEP_1,
         element: <FormYourInfo />,
       },
       {
-        path: "/select-plan",
+        path: RoutePath.STEP_2,
         element: <FormSelectPlan />,
       },
-      { path: "/add-ons", element: <FormAddOns /> },
+      { path: RoutePath.STEP_3, element: <FormAddOns /> },
       {
-        path: "/summary",
+        path: RoutePath.STEP_4,
         element: <FormSummary />,
       },
     ],
@@ -38,5 +46,5 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <Provider store={store}>
       <RouterProvider router={router} />
     </Provider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

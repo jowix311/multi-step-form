@@ -1,4 +1,4 @@
-import {Outlet} from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import FormStepIndicator from "./components/form-step-indicator/FormStepIndicator.tsx";
 
 /**
@@ -11,11 +11,10 @@ import FormStepIndicator from "./components/form-step-indicator/FormStepIndicato
 function App() {
   return (
     <>
-     Main Content
-        <FormStepIndicator/>
-        <Outlet/>
+      <FormStepIndicator />
+      <Outlet />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
