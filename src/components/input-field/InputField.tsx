@@ -2,6 +2,7 @@ import { FieldErrors } from "react-hook-form";
 import { ChangeEvent } from "react";
 
 interface InputFieldProps {
+  spacing?: string;
   label: string;
   id: string;
   type: string;
@@ -21,16 +22,17 @@ interface InputFieldProps {
  * */
 
 const InputField = ({
+  spacing,
   label,
   register,
   errors,
   ...otherProps
 }: InputFieldProps) => {
   return (
-    <div className="basis-full">
+    <div className={`basis-full ${spacing}`}>
       <label
         htmlFor={otherProps.id}
-        className={`mb-2 block font-poppins text-xs uppercase tracking-wider  ${
+        className={`mb-1 block font-ubuntu text-xs font-bold text-marineBlue  ${
           errors![otherProps.id] ? "text-lightRed" : "text-smokeyGray"
         }`}
       >
@@ -39,16 +41,16 @@ const InputField = ({
       <input
         {...register}
         {...otherProps}
-        className={` h-12 w-full rounded-lg
-        border border-solid  pl-3
-        font-ubuntu text-offBlack focus:outline-none ${
+        className={`font-sm h-10
+        w-full rounded-lg border border-solid pl-3 font-ubuntu text-base
+        font-medium text-coolGray focus:outline-none ${
           errors![otherProps.id]
             ? "border-lightRed caret-lightRed hover:border-lightRed focus:border-lightRed active:border-lightRed"
-            : "border-lightGray caret-purple hover:border-purple focus:border-purple active:border-purple"
+            : "caret-purple hover:border-purple focus:border-purple active:border-purple border-lightGray"
         }`}
       />
       {errors![otherProps.id] && (
-        <span className="font-poppins text-xs italic text-lightRed">
+        <span className="font-poppins text-lightRed text-xs italic">
           {errors![otherProps.id]!.message!.toString()}
         </span>
       )}

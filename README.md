@@ -30,5 +30,6 @@ export default {
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
 
 - react-hook-form
+- - explored using trigger
 - applied react-toolkit
 - refreshed mind on installing Tailwind within Vite+React
