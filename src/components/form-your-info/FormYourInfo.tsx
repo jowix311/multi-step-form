@@ -4,6 +4,7 @@ import { ChangeEvent, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import InputField from "../input-field/InputField.tsx";
 import { useNavigate } from "react-router-dom";
+import { RoutePath } from "../../main.tsx";
 
 interface IFormYourInfo {
   name: string;
@@ -27,9 +28,7 @@ const FormYourInfo = () => {
     //save to redux and redirect
     dispatch(setYourInfoForm({ ...data }));
 
-    navigate(`/select-plan`);
-
-    alert(1);
+    navigate(RoutePath.STEP_2);
   };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
