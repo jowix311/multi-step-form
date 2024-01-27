@@ -3,10 +3,12 @@ import { RootState } from "../store.ts";
 
 interface SelectPlan {
   plan: string;
+  isMonthly: boolean;
 }
 
 const initialState: SelectPlan = {
-  plan: "",
+  plan: "arcade", //@todo place on an enum
+  isMonthly: true,
 };
 
 export const selectPlanSlice = createSlice({
@@ -14,8 +16,9 @@ export const selectPlanSlice = createSlice({
   initialState,
   reducers: {
     setPlan: (state, action: PayloadAction<SelectPlan>) => {
-      const { plan } = action.payload;
+      const { plan, isMonthly } = action.payload;
       state.plan = plan;
+      state.isMonthly = isMonthly;
     },
   },
 });

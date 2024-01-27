@@ -8,6 +8,8 @@ interface InputRadioProps {
   value?: string;
   iconSource?: string;
   iconAlt?: string;
+  rate: string;
+  promoMessage?: string;
   isSelected: boolean;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   register: object;
@@ -22,6 +24,8 @@ const InputRadioCustom = ({
   iconSource,
   iconAlt,
   isSelected,
+  rate,
+  promoMessage,
   ...otherProps
 }: InputRadioProps) => {
   return (
@@ -43,9 +47,14 @@ const InputRadioCustom = ({
           <p className="font-ubuntu text-base font-medium text-marineBlue">
             {label}
           </p>
-        </div>
-        <div className="">
-          <p className="font-ubuntu text-sm font-medium text-coolGray">3</p>
+          <p className="font-ubuntu text-sm font-normal text-coolGray">
+            {rate}
+          </p>
+          {promoMessage && (
+            <p className="font-ubuntu text-sm font-normal text-marineBlue">
+              {promoMessage}
+            </p>
+          )}
         </div>
       </label>
 
