@@ -181,7 +181,7 @@ const FormSelectPlan = () => {
           <FormToggle
             leftLabel="Monthly"
             rightLabel="Yearly"
-            flag={state.isMonthly}
+            isMonthly={state.isMonthly}
             handleBillingTermChange={handleBillingTermChange}
           />
         </div>
