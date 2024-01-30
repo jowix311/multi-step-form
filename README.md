@@ -32,4 +32,7 @@ export default {
 - react-hook-form
 - - explored using trigger
 - applied react-toolkit
+- created custom radio and checkboxes using tailwind
 - refreshed mind on installing Tailwind within Vite+React
+
+- make header and foot submission to be component

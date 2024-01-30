@@ -41,6 +41,7 @@ const FormToggle: FunctionComponent<IFormToggle> = ({
       <div className="flex items-center" role="switch" onClick={handleToggle}>
         <div className=" h-4 w-8 rounded-xl bg-marineBlue p-1">
           <div
+            key={Math.random() + "23123"}
             className={`relative h-full w-2 rounded-full bg-white transition duration-[10000] ${
               !flag && "translate-x-[200%]"
             }`} //@todo: animation not working need to find way

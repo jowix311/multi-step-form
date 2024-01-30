@@ -32,7 +32,7 @@ const InputRadioCustom = ({
     <div className={`basis-full ${spacing}`}>
       <label
         htmlFor={otherProps.id}
-        className={`mb-1 grid auto-cols-min grid-cols-[min-content_1fr] gap-x-2 rounded border border-lightGray p-3 font-ubuntu text-xs font-bold text-marineBlue ${
+        className={`mb-1 grid auto-cols-min grid-cols-[min-content_1fr] gap-x-1 rounded border border-lightGray p-3 font-ubuntu text-xs font-bold text-marineBlue ${
           isSelected ? "border-purplishBlue bg-magnolia" : ""
         }`}
       >
@@ -47,7 +47,7 @@ const InputRadioCustom = ({
           <p className="font-ubuntu text-base font-medium text-marineBlue">
             {label}
           </p>
-          <p className="font-ubuntu text-sm font-normal text-coolGray">
+          <p className="font-ubuntu text-xs font-normal text-coolGray">
             {rate}
           </p>
           {promoMessage && (
