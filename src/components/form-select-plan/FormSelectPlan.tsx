@@ -106,7 +106,7 @@ const FormSelectPlan = () => {
   };
 
   return (
-    <div className="flex h-screen bg-magnolia">
+    <div className="bg-magnolia">
       <form onSubmit={handleSubmit(onSubmit)} noValidate={true}>
         <div className="absolute left-0 right-0 top-20 z-10 m-auto w-[340px] rounded-2xl bg-white p-5 pt-6">
           <h1 className="mb-2 font-ubuntu text-2xl font-bold text-marineBlue">
@@ -188,7 +188,7 @@ const FormSelectPlan = () => {
 
         <div className="absolute bottom-0 left-0 right-0 flex justify-between bg-white p-6">
           <NavLink
-            to={RoutePath.STEP_3}
+            to={RoutePath.STEP_1}
             className="flex items-center text-sm font-bold text-coolGray"
           >
             Go Back

@@ -10,10 +10,10 @@ import FormStepIndicator from "./components/form-step-indicator/FormStepIndicato
 
 function App() {
   return (
-    <>
+    <div className="grid h-full grid-rows-[auto_1fr]">
       <FormStepIndicator />
       <Outlet />
-    </>
+    </div>
   );
 }
 

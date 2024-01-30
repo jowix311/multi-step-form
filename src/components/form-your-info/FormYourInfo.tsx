@@ -37,7 +37,7 @@ const FormYourInfo = () => {
   };
 
   return (
-    <div className="flex h-screen bg-magnolia">
+    <div className="bg-magnolia">
       <form onSubmit={handleSubmit(onSubmit)} noValidate={true}>
         <div className="absolute left-0 right-0 top-20 z-10 m-auto w-[340px] rounded-2xl bg-white p-5 pt-6">
           <h1 className="mb-2 font-ubuntu text-2xl font-bold text-marineBlue">
