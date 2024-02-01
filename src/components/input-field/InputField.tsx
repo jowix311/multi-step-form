@@ -50,7 +50,7 @@ const InputField = ({
         }`}
       />
       {errors![otherProps.id] && (
-        <span className="font-poppins text-lightRed text-xs italic">
+        <span className="font-poppins text-xs italic text-red-800">
           {errors![otherProps.id]!.message!.toString()}
         </span>
       )}

@@ -99,6 +99,10 @@ const FormYourInfo = () => {
                   value: true,
                   message: "This field is required",
                 },
+                pattern: {
+                  value: /^\d{7}$/,
+                  message: "Please enter a valid phone number",
+                },
               }),
             }}
           />
