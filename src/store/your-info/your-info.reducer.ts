@@ -23,10 +23,13 @@ export const yourInfoSlice = createSlice({
       state.email = email;
       state.phone = phone;
     },
+    resetInfo: () => {
+      return { ...initialState };
+    },
   },
 });
 
-export const { setYourInfoForm } = yourInfoSlice.actions;
+export const { setYourInfoForm, resetInfo } = yourInfoSlice.actions;
 
 export const selectYourInfo = (state: RootState) => state.yourInfo;
 

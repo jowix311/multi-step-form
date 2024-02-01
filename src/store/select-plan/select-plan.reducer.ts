@@ -23,10 +23,13 @@ export const selectPlanSlice = createSlice({
       state.isMonthly = isMonthly;
       state.price = price;
     },
+    resetPlan: () => {
+      return { ...initialState };
+    },
   },
 });
 
-export const { setPlan } = selectPlanSlice.actions;
+export const { setPlan, resetPlan } = selectPlanSlice.actions;
 
 export const selectPlan = (state: RootState) => state.selectPlan;
 

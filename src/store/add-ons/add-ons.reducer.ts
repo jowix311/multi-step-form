@@ -39,10 +39,13 @@ export const selectAddOnsSlice = createSlice({
       state.largerStoragePrice = largerStoragePrice;
       state.customizableProfilePrice = customizableProfilePrice;
     },
+    resetAddOns: () => {
+      return { ...initialState };
+    },
   },
 });
 
-export const { setAddOns } = selectAddOnsSlice.actions;
+export const { setAddOns, resetAddOns } = selectAddOnsSlice.actions;
 
 export const selectAddOns = (state: RootState) => state.selectAddOns;
 
