@@ -5,12 +5,14 @@ interface YourInfo {
   name: string;
   email: string;
   phone: string;
+  isInfoComplete: boolean;
 }
 
 const initialState: YourInfo = {
   name: "",
   email: "",
   phone: "",
+  isInfoComplete: false,
 };
 
 export const yourInfoSlice = createSlice({
@@ -18,10 +20,11 @@ export const yourInfoSlice = createSlice({
   initialState,
   reducers: {
     setYourInfoForm: (state, action: PayloadAction<YourInfo>) => {
-      const { name, email, phone } = action.payload;
+      const { name, email, phone, isInfoComplete } = action.payload;
       state.name = name;
       state.email = email;
       state.phone = phone;
+      state.isInfoComplete = isInfoComplete;
     },
     resetInfo: () => {
       return { ...initialState };

@@ -26,7 +26,7 @@ const FormYourInfo = () => {
   const [formData, setFormData] = useState<IFormYourInfo>({ ...state });
   const onSubmit: SubmitHandler<IFormYourInfo> = (data) => {
     //save to redux and redirect
-    dispatch(setYourInfoForm({ ...data }));
+    dispatch(setYourInfoForm({ ...data, isInfoComplete: true }));
 
     navigate(RoutePath.STEP_2);
   };

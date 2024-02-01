@@ -36,3 +36,4 @@ export default {
 - refreshed mind on installing Tailwind within Vite+React
 
 - make header and foot submission to be component
+- https://medium.com/@shirisha95/react-router-v6-simplified-protected-routes-85b209326a55
