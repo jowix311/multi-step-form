@@ -1,14 +1,16 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store.ts";
 
-interface SelectPlan {
+export interface SelectPlan {
   plan: string;
   isMonthly: boolean;
+  price: number;
 }
 
 const initialState: SelectPlan = {
   plan: "arcade", //@todo place on an enum
   isMonthly: true,
+  price: 9,
 };
 
 export const selectPlanSlice = createSlice({
@@ -16,9 +18,10 @@ export const selectPlanSlice = createSlice({
   initialState,
   reducers: {
     setPlan: (state, action: PayloadAction<SelectPlan>) => {
-      const { plan, isMonthly } = action.payload;
+      const { plan, isMonthly, price } = action.payload;
       state.plan = plan;
       state.isMonthly = isMonthly;
+      state.price = price;
     },
   },
 });

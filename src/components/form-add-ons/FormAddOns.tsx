@@ -1,10 +1,10 @@
-// import InputRadioCustom from "../input-radio-custom/InputRadioCustom.tsx";
-// import iconAdvanced from "../../assets/icon-advanced.svg";
-// import { NavLink } from "react-router-dom";
-// import { RoutePath } from "../../main.tsx";
-// import { useForm } from "react-hook-form";
-
 import { NavLink, useNavigate } from "react-router-dom";
+import InputCheckboxCustom from "../input-checkbox-custom/InputCheckboxCustom.tsx";
+import { RoutePath } from "../../main.tsx";
+import { useAppDispatch, useAppSelector } from "../../store/hooks.ts";
+import { ChangeEvent, useEffect } from "react";
+import { setAddOns } from "../../store/add-ons/add-ons.reducer.ts";
+import { useForm } from "react-hook-form";
 
 interface IFormAddons {
   onlineService: string;
@@ -12,19 +12,32 @@ interface IFormAddons {
   customizableProfile: string;
 }
 
-import { useForm } from "react-hook-form";
-
 enum ADD_ONS {
   ONLINE_SERVICE = "onlineService",
   LARGER_STORAGE = "largerStorage",
   CUSTOMIZABLE_PROFILE = "customizableProfile",
 }
 
-import InputCheckboxCustom from "../input-checkbox-custom/InputCheckboxCustom.tsx";
-import { RoutePath } from "../../main.tsx";
-import { useAppDispatch, useAppSelector } from "../../store/hooks.ts";
-import { ChangeEvent } from "react";
-import { setAddOns } from "../../store/add-ons/add-ons.reducer.ts";
+const addOnRate = {
+  onlineService: {
+    monthly: 1,
+    yearly: 10,
+  },
+  largerStorage: {
+    monthly: 2,
+    yearly: 20,
+  },
+  customizableProfile: {
+    monthly: 2,
+    yearly: 20,
+  },
+};
+
+const addOnPriceKeyMap = {
+  [ADD_ONS.ONLINE_SERVICE]: "onlineServicePrice",
+  [ADD_ONS.LARGER_STORAGE]: "largerStoragePrice",
+  [ADD_ONS.CUSTOMIZABLE_PROFILE]: "customizableProfilePrice",
+};
 
 const FormAddOns = () => {
   const state = useAppSelector((state) => state.selectAddOns);
@@ -32,13 +45,56 @@ const FormAddOns = () => {
   const { handleSubmit, register } = useForm<IFormAddons>();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
+  //on render check and update add on pricing if monthly or yearly
+  useEffect(() => {
+    dispatch(
+      setAddOns({
+        ...state,
+        onlineServicePrice: handleAddOnPriceChange(
+          ADD_ONS.ONLINE_SERVICE,
+          state.onlineService,
+        ),
+        largerStoragePrice: handleAddOnPriceChange(
+          ADD_ONS.LARGER_STORAGE,
+          state.largerStorage,
+        ),
+        customizableProfilePrice: handleAddOnPriceChange(
+          ADD_ONS.CUSTOMIZABLE_PROFILE,
+          state.customizableProfile,
+        ),
+      }),
+    );
+  });
+
   const onSubmit = () => {
     navigate(RoutePath.STEP_4);
   };
 
+  const handleAddOnPriceChange = (addOnName: ADD_ONS, isChecked: boolean) => {
+    if (!isChecked) {
+      return 0;
+    }
+
+    if (planState.isMonthly) {
+      return addOnRate[addOnName].monthly;
+    }
+
+    return addOnRate[addOnName].yearly;
+  };
+
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name } = event.target;
-    dispatch(setAddOns({ ...state, [name]: event.target.checked }));
+    dispatch(
+      setAddOns({
+        ...state,
+        [name]: event.target.checked, //needed to check the checkbox, or we can use if price has value
+        [addOnPriceKeyMap[name as ADD_ONS]]: handleAddOnPriceChange(
+          name as ADD_ONS,
+          event.target.checked,
+        ),
+      }),
+    );
   };
 
   return (

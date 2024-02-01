@@ -3,8 +3,11 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useAppDispatch, useAppSelector } from "../../store/hooks.ts";
 import { NavLink, useNavigate } from "react-router-dom";
 import { RoutePath } from "../../main.tsx";
-import { ChangeEvent, useState } from "react";
-import { setPlan } from "../../store/select-plan/select-plan.reducer.ts";
+import { ChangeEvent } from "react";
+import {
+  SelectPlan,
+  setPlan,
+} from "../../store/select-plan/select-plan.reducer.ts";
 import iconArcade from "../../assets/icon-arcade.svg";
 import iconAdvanced from "../../assets/icon-advanced.svg";
 import iconPro from "../../assets/icon-pro.svg";
@@ -13,6 +16,7 @@ import FormToggle from "../form-toggle/FormToggle.tsx";
 interface IFormPlan {
   plan: string;
   isMonthly: boolean;
+  price: number;
 }
 enum PLAN {
   ARCADE = "arcade",
@@ -73,28 +77,62 @@ const FormSelectPlan = () => {
     formState: { errors },
   } = useForm<IFormPlan>();
 
-  const [formData, setFormData] = useState<IFormPlan>({ ...state });
-
   const { arcade, advanced, pro } = planRateInfo;
 
   const dispatch = useAppDispatch();
 
   const navigate = useNavigate();
-  const onSubmit: SubmitHandler<IFormPlan> = (data) => {
-    //save to redux and redirect
-    dispatch(setPlan({ ...data }));
+  const onSubmit: SubmitHandler<IFormPlan> = () => {
+    //no need for checking here
 
     navigate(RoutePath.STEP_3);
   };
 
+  const handlePriceChange = (
+    selectedPlanType: string,
+    currentState: SelectPlan,
+  ) => {
+    let price = 0;
+
+    if (PLAN.ARCADE === selectedPlanType) {
+      price = currentState.isMonthly ? arcade.monthly.rate : arcade.yearly.rate;
+    }
+    if (PLAN.ADVANCED === selectedPlanType) {
+      price = currentState.isMonthly
+        ? advanced.monthly.rate
+        : advanced.yearly.rate;
+    }
+    if (PLAN.PRO === selectedPlanType) {
+      price = currentState.isMonthly ? pro.monthly.rate : pro.yearly.rate;
+    }
+
+    return price;
+  };
+
   const handleBillingTermChange = (isChecked: boolean) => {
     //save to redux
-    dispatch(setPlan({ ...state, isMonthly: isChecked }));
+    dispatch(
+      setPlan({
+        ...state,
+        isMonthly: isChecked,
+        price: handlePriceChange(state.plan, {
+          ...state,
+          isMonthly: isChecked,
+        }),
+      }),
+    );
   };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
+
+    dispatch(
+      setPlan({
+        ...state,
+        [name]: value,
+        price: handlePriceChange(value, state),
+      }),
+    );
   };
 
   const createRateLabel = (isMonthly: boolean, info: rateInfo) => {
@@ -134,7 +172,7 @@ const FormSelectPlan = () => {
             }}
             iconSource={iconArcade}
             iconAlt="aracde icon"
-            isSelected={PLAN.ARCADE === formData.plan}
+            isSelected={PLAN.ARCADE === state.plan}
           />
           <InputRadioCustom
             spacing="mb-3"
@@ -155,7 +193,7 @@ const FormSelectPlan = () => {
             }}
             iconSource={iconAdvanced}
             iconAlt="advanced icon"
-            isSelected={PLAN.ADVANCED === formData.plan}
+            isSelected={PLAN.ADVANCED === state.plan}
           />
           <InputRadioCustom
             spacing="mb-3"
@@ -176,7 +214,7 @@ const FormSelectPlan = () => {
             }}
             iconSource={iconPro}
             iconAlt="pro icon"
-            isSelected={PLAN.PRO === formData.plan}
+            isSelected={PLAN.PRO === state.plan}
           />
           <FormToggle
             leftLabel="Monthly"
