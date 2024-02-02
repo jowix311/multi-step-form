@@ -56,14 +56,20 @@ const FormSummary = () => {
     );
   };
 
-  const TotalRow = ({ price, isMonthly }: Partial<SelectPlan>) => {
+  const getTotal = () => {
+    return (
+      price + onlineServicePrice + largerStoragePrice + customizableProfilePrice
+    );
+  };
+
+  const TotalRow = ({ isMonthly }: Partial<SelectPlan>) => {
     return (
       <div className="grid grid-cols-[1fr_auto] pb-1">
         <p className="font-ubuntu text-xs text-coolGray lg:text-sm">
           Total (per {isMonthly ? "month" : "year"})
         </p>
         <p className=" font-ubuntu text-sm font-bold text-purplishBlue lg:text-lg ">
-          ${price}/{isMonthly ? "mo" : "yr"}
+          ${getTotal()}/{isMonthly ? "mo" : "yr"}
         </p>
       </div>
     );
