@@ -1,7 +1,7 @@
 import sidebarMobile from "../../assets/bg-sidebar-mobile.svg";
 import sidebarDesktop from "../../assets/bg-sidebar-desktop.svg";
 import { RoutePath } from "../../main.tsx";
-import FormStep from "../form-step/form-step.tsx";
+import FormStep from "../form-step/FormStep.tsx";
 
 const FormStepIndicator = () => {
   return (

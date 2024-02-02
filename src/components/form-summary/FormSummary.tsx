@@ -9,7 +9,11 @@ import React, { useState } from "react";
 import thankYouIcon from "../../assets/icon-thank-you.svg";
 import { resetInfo } from "../../store/your-info/your-info.reducer.ts";
 import { resetAddOns } from "../../store/add-ons/add-ons.reducer.ts";
-import { FooterDualButtonBlock, MainContentBlock } from "../layout/Layout.tsx";
+import {
+  FooterDualButtonBlock,
+  MainContentBlock,
+  MainContentWrapper,
+} from "../layout/Layout.tsx";
 
 const FormSummary = () => {
   const { isMonthly, price } = useAppSelector((state) => state.selectPlan);
@@ -71,7 +75,7 @@ const FormSummary = () => {
         <h1 className="mb-2pla font-ubuntu text-2xl font-bold text-marineBlue">
           Finishing up
         </h1>
-        <p className="mb-4 font-ubuntu font-medium text-coolGray">
+        <p className="mb-4 font-ubuntu font-medium text-coolGray md:mb-8">
           Double-check everything looks OK before confirming.
         </p>
 
@@ -131,7 +135,7 @@ const FormSummary = () => {
   const SummarySubmittedContainer = () => {
     return (
       <>
-        <div className="content-centern inline-flex w-full  justify-center pt-12">
+        <div className="content-centern inline-flex w-full  justify-center pt-12 md:pt-0">
           <img
             className="h-12 w-12 max-w-none"
             src={thankYouIcon}
@@ -142,7 +146,7 @@ const FormSummary = () => {
         <p className="mb-2 text-center font-ubuntu text-xl font-bold text-marineBlue">
           Thank you!
         </p>
-        <p className="font-ubunt pl-9  pr-9  text-center text-xs text-coolGray">
+        <p className="pl-9 pr-9  text-center  font-ubuntu text-xs text-coolGray md:text-sm ">
           Thanks for confirming your subscription! We hope you have fun using
           our platform. If you ever need support, please feel free to email us
           at supoprt@loremgaming.com
@@ -152,8 +156,12 @@ const FormSummary = () => {
   };
 
   return (
-    <div className="bg-magnolia">
-      <div>
+    <MainContentWrapper>
+      <div
+        className={`h-full md:flex md:flex-col lg:pr-24 ${
+          !isConfirmed ? "md:justify-between" : "md:justify-center"
+        } `}
+      >
         <MainContentBlock>
           {!isConfirmed && <SummaryDetailContainer />}
           {isConfirmed && <SummarySubmittedContainer />}
@@ -163,7 +171,7 @@ const FormSummary = () => {
           <FooterDualButtonBlock>
             <NavLink
               to={RoutePath.STEP_3}
-              className="flex items-center text-sm font-bold text-coolGray"
+              className="flex items-center text-sm font-medium text-coolGray"
             >
               Go Back
             </NavLink>
@@ -177,7 +185,7 @@ const FormSummary = () => {
           </FooterDualButtonBlock>
         )}
       </div>
-    </div>
+    </MainContentWrapper>
   );
 };
 

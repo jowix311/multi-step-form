@@ -24,7 +24,7 @@ export const MainContentBlock = ({ children }: ChildrenProp) => {
 
 export const FooterButtonBlock = ({ children }: ChildrenProp) => {
   return (
-    <div className="absolute bottom-0 left-0 right-0 flex justify-end bg-white p-6 md:relative md:p-0">
+    <div className="absolute bottom-0 left-0 right-0 flex justify-end bg-white p-6 md:relative md:p-0 md:pb-4">
       {children}
     </div>
   );
@@ -32,7 +32,7 @@ export const FooterButtonBlock = ({ children }: ChildrenProp) => {
 
 export const FooterDualButtonBlock = ({ children }: ChildrenProp) => {
   return (
-    <div className="absolute bottom-0 left-0 right-0 flex justify-between bg-white p-6 md:relative md:p-5">
+    <div className="absolute bottom-0 left-0 right-0 flex justify-between bg-white p-6 md:relative md:p-5 md:pb-4">
       {children}
     </div>
   );

@@ -46,13 +46,13 @@ const FormYourInfo = () => {
       <form
         onSubmit={handleSubmit(onSubmit)}
         noValidate={true}
-        className="h-full md:flex md:flex-col md:justify-between"
+        className="h-full md:flex md:flex-col md:justify-between lg:pr-24"
       >
         <MainContentBlock>
           <h1 className="mb-2 font-ubuntu text-2xl font-bold text-marineBlue">
             Personal Info
           </h1>
-          <p className="mb-4 font-ubuntu font-medium text-coolGray">
+          <p className="mb-4 font-ubuntu font-medium text-coolGray md:mb-8">
             Please provide your name, email address, and phone number.
           </p>
           <InputField

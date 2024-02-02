@@ -107,13 +107,13 @@ const FormAddOns = () => {
       <form
         onSubmit={handleSubmit(onSubmit)}
         noValidate={true}
-        className="h-full md:flex md:flex-col md:justify-between"
+        className="h-full md:flex md:flex-col md:justify-between lg:pr-24"
       >
         <MainContentBlock>
           <h1 className="mb-2 font-ubuntu text-2xl font-bold text-marineBlue">
             Pick add-ons
           </h1>
-          <p className="mb-4 font-ubuntu font-medium text-coolGray">
+          <p className="mb-4 font-ubuntu font-medium text-coolGray  md:mb-8">
             Add-ons help enhance your gaming experience.
           </p>
 
@@ -165,7 +165,7 @@ const FormAddOns = () => {
         <FooterDualButtonBlock>
           <NavLink
             to={RoutePath.STEP_2}
-            className="flex items-center text-sm font-bold text-coolGray"
+            className="flex items-center text-sm font-medium text-coolGray"
           >
             Go Back
           </NavLink>

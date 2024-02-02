@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.tsx";
 import PageNotFound from "./components/page-not-found/PageNotFound.tsx";
 import FormYourInfo from "./components/form-your-info/FormYourInfo.tsx";
-import FormSummary from "./components/form-summary/form-summary.tsx";
+import FormSummary from "./components/form-summary/FormSummary.tsx";
 import FormAddOns from "./components/form-add-ons/FormAddOns.tsx";
 import FormSelectPlan from "./components/form-select-plan/FormSelectPlan.tsx";
 import { Provider } from "react-redux";
