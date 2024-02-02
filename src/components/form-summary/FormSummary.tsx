@@ -48,8 +48,8 @@ const FormSummary = () => {
   }) => {
     return (
       <div className="grid grid-cols-[1fr_auto]">
-        <p className="font-ubuntu text-xs text-coolGray">{label}</p>
-        <p className="font-ubuntu text-xs text-marineBlue">
+        <p className="font-ubuntu text-xs text-coolGray lg:text-sm">{label}</p>
+        <p className="font-ubuntu text-xs text-marineBlue lg:text-sm">
           ${price}/{isMonthly ? "mo" : "yr"}
         </p>
       </div>
@@ -59,10 +59,10 @@ const FormSummary = () => {
   const TotalRow = ({ price, isMonthly }: Partial<SelectPlan>) => {
     return (
       <div className="grid grid-cols-[1fr_auto] pb-1">
-        <p className="font-ubuntu text-xs text-coolGray">
+        <p className="font-ubuntu text-xs text-coolGray lg:text-sm">
           Total (per {isMonthly ? "month" : "year"})
         </p>
-        <p className="font-ubuntu  text-sm font-bold text-purplishBlue">
+        <p className=" font-ubuntu text-sm font-bold text-purplishBlue lg:text-lg ">
           ${price}/{isMonthly ? "mo" : "yr"}
         </p>
       </div>
@@ -87,7 +87,7 @@ const FormSummary = () => {
               </p>
               <NavLink
                 to={RoutePath.STEP_2}
-                className="flex font-ubuntu text-xs font-medium leading-tight text-coolGray underline"
+                className="flex font-ubuntu text-xs font-medium leading-tight text-coolGray underline hover:text-purplishBlue"
               >
                 Change
               </NavLink>

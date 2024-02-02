@@ -38,7 +38,11 @@ const FormToggle: FunctionComponent<IFormToggle> = ({
 
   const ToggleIndicator = ({ flag }: { flag: boolean }) => {
     return (
-      <div className="flex items-center" role="switch" onClick={handleToggle}>
+      <div
+        className="flex cursor-pointer items-center"
+        role="switch"
+        onClick={handleToggle}
+      >
         <div className=" h-4 w-8 rounded-xl bg-marineBlue p-1">
           <div
             key={Math.random() + "23123"}

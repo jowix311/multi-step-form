@@ -26,8 +26,9 @@ const InputCheckboxCustom = ({
   ...otherProps
 }: InputCheckboxProps) => {
   return (
-    <div
-      className={`grid grid-cols-[min-content_1fr] items-center gap-4 rounded border bg-magnolia p-4 ${
+    <label
+      htmlFor={otherProps.id}
+      className={`grid cursor-pointer grid-cols-[min-content_1fr] items-center gap-4 rounded border bg-magnolia p-4 hover:border-purplishBlue ${
         isChecked && "border-purplishBlue"
       } ${spacing}`}
     >
@@ -38,7 +39,7 @@ const InputCheckboxCustom = ({
         type="checkbox"
         checked={isChecked}
       />
-      <label htmlFor="my-check">
+      <div>
         <div className="grid grid-cols-[auto_1fr] items-center">
           <div>
             <p className="font-ubuntu text-base font-medium leading-tight text-marineBlue">
@@ -52,8 +53,8 @@ const InputCheckboxCustom = ({
             {rate}
           </p>
         </div>
-      </label>
-    </div>
+      </div>
+    </label>
   );
 };
 

@@ -42,15 +42,15 @@ const InputField = ({
         {...register}
         {...otherProps}
         className={`font-sm h-10
-        w-full rounded-lg border border-solid pl-3 font-ubuntu text-base
-        font-medium text-coolGray focus:outline-none ${
+        w-full rounded-lg border border-solid pl-3 font-ubuntu text-base font-medium
+        text-coolGray focus:outline-none ${
           errors![otherProps.id]
-            ? "border-lightRed caret-lightRed hover:border-lightRed focus:border-lightRed active:border-lightRed"
-            : "caret-purple hover:border-purple focus:border-purple active:border-purple border-lightGray"
+            ? "hover:border-strawberryRedd border-strawberryRed caret-strawberryRed focus:border-strawberryRed active:border-strawberryRed"
+            : "caret-purple border-lightGray hover:border-purplishBlue focus:border-purplishBlue active:border-purplishBlue"
         }`}
       />
       {errors![otherProps.id] && (
-        <span className="font-poppins text-xs italic text-red-800">
+        <span className="font-poppins text-xs font-bold text-strawberryRed">
           {errors![otherProps.id]!.message!.toString()}
         </span>
       )}

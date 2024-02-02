@@ -32,7 +32,7 @@ const InputRadioCustom = ({
     <div className={` ${spacing}`}>
       <label
         htmlFor={otherProps.id}
-        className={`mb-1  grid grid-cols-[min-content_1fr] gap-x-1 rounded border border-lightGray p-3 font-ubuntu text-xs font-bold text-marineBlue md:grid-rows-2 md:gap-y-8  md:grid-cols-1${
+        className={`mb-1 grid cursor-pointer  grid-cols-[min-content_1fr] gap-x-1 rounded border border-lightGray p-3 font-ubuntu text-xs font-bold text-marineBlue hover:border-purplishBlue md:grid-rows-2 md:gap-y-8  md:grid-cols-1${
           isSelected ? " border-purplishBlue bg-magnolia" : ""
         }`}
       >
