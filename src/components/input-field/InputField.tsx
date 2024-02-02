@@ -43,7 +43,7 @@ const InputField = ({
         {...otherProps}
         className={`font-sm h-10
         w-full rounded-lg border border-solid pl-3 font-ubuntu text-base font-medium
-        text-coolGray focus:outline-none ${
+        text-marineBlue focus:outline-none ${
           errors![otherProps.id]
             ? "hover:border-strawberryRedd border-strawberryRed caret-strawberryRed focus:border-strawberryRed active:border-strawberryRed"
             : "caret-purple border-lightGray hover:border-purplishBlue focus:border-purplishBlue active:border-purplishBlue"
