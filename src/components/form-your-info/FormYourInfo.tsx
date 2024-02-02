@@ -5,6 +5,11 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import InputField from "../input-field/InputField.tsx";
 import { useNavigate } from "react-router-dom";
 import { RoutePath } from "../../main.tsx";
+import {
+  FooterButtonBlock,
+  MainContentBlock,
+  MainContentWrapper,
+} from "../layout/Layout.tsx";
 
 interface IFormYourInfo {
   name: string;
@@ -37,9 +42,13 @@ const FormYourInfo = () => {
   };
 
   return (
-    <div className="bg-magnolia">
-      <form onSubmit={handleSubmit(onSubmit)} noValidate={true}>
-        <div className="absolute left-0 right-0 top-20 z-10 m-auto w-[340px] rounded-2xl bg-white p-5 pt-6">
+    <MainContentWrapper>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        noValidate={true}
+        className="h-full md:flex md:flex-col md:justify-between"
+      >
+        <MainContentBlock>
           <h1 className="mb-2 font-ubuntu text-2xl font-bold text-marineBlue">
             Personal Info
           </h1>
@@ -47,7 +56,7 @@ const FormYourInfo = () => {
             Please provide your name, email address, and phone number.
           </p>
           <InputField
-            spacing="mb-3"
+            spacing="mb-6"
             label="Name"
             errors={errors}
             id="name"
@@ -66,7 +75,7 @@ const FormYourInfo = () => {
             }}
           />
           <InputField
-            spacing="mb-3"
+            spacing="mb-6"
             label="Email Address"
             errors={errors}
             id="email"
@@ -106,17 +115,17 @@ const FormYourInfo = () => {
               }),
             }}
           />
-        </div>
-        <div className="absolute bottom-0 left-0 right-0 flex justify-end bg-white p-6">
+        </MainContentBlock>
+        <FooterButtonBlock>
           <button
             type="submit"
             className="rounded bg-marineBlue p-3 pl-4 pr-4 font-ubuntu text-sm font-medium text-lightGray hover:text-white"
           >
             Next Step
           </button>
-        </div>
+        </FooterButtonBlock>
       </form>
-    </div>
+    </MainContentWrapper>
   );
 };
 

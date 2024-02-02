@@ -9,6 +9,7 @@ import React, { useState } from "react";
 import thankYouIcon from "../../assets/icon-thank-you.svg";
 import { resetInfo } from "../../store/your-info/your-info.reducer.ts";
 import { resetAddOns } from "../../store/add-ons/add-ons.reducer.ts";
+import { FooterDualButtonBlock, MainContentBlock } from "../layout/Layout.tsx";
 
 const FormSummary = () => {
   const { isMonthly, price } = useAppSelector((state) => state.selectPlan);
@@ -153,13 +154,13 @@ const FormSummary = () => {
   return (
     <div className="bg-magnolia">
       <div>
-        <div className="absolute left-0 right-0 top-20 z-10 m-auto w-[340px] rounded-2xl bg-white p-5 pt-6">
+        <MainContentBlock>
           {!isConfirmed && <SummaryDetailContainer />}
           {isConfirmed && <SummarySubmittedContainer />}
-        </div>
+        </MainContentBlock>
 
         {!isConfirmed && (
-          <div className="absolute bottom-0 left-0 right-0 flex justify-between bg-white p-6">
+          <FooterDualButtonBlock>
             <NavLink
               to={RoutePath.STEP_3}
               className="flex items-center text-sm font-bold text-coolGray"
@@ -173,7 +174,7 @@ const FormSummary = () => {
             >
               Confirm
             </button>
-          </div>
+          </FooterDualButtonBlock>
         )}
       </div>
     </div>

@@ -32,7 +32,7 @@ const InputField = ({
     <div className={`basis-full ${spacing}`}>
       <label
         htmlFor={otherProps.id}
-        className={`mb-1 block font-ubuntu text-xs font-bold text-marineBlue  ${
+        className={`mb-1 block font-ubuntu text-xs font-medium text-marineBlue md:text-base  ${
           errors![otherProps.id] ? "text-lightRed" : "text-smokeyGray"
         }`}
       >

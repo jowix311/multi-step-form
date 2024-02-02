@@ -15,7 +15,7 @@ function App() {
   }, [navigate, state]);
 
   return (
-    <div className="grid h-full grid-rows-[auto_1fr]">
+    <div className="grid h-full grid-rows-[auto_1fr] md:m-auto md:h-auto md:w-[648px] md:grid-cols-[auto_1fr] md:grid-rows-none md:items-center md:rounded-lg md:bg-white md:p-4 md:shadow-md lg:w-[1024px] lg:gap-x-24">
       <FormStepIndicator />
       <Outlet />
     </div>

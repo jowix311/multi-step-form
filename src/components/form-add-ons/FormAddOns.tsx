@@ -5,6 +5,11 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks.ts";
 import { ChangeEvent, useEffect } from "react";
 import { setAddOns } from "../../store/add-ons/add-ons.reducer.ts";
 import { useForm } from "react-hook-form";
+import {
+  FooterDualButtonBlock,
+  MainContentBlock,
+  MainContentWrapper,
+} from "../layout/Layout.tsx";
 
 interface IFormAddons {
   onlineService: string;
@@ -98,9 +103,13 @@ const FormAddOns = () => {
   };
 
   return (
-    <div className="bg-magnolia">
-      <form onSubmit={handleSubmit(onSubmit)} noValidate={true}>
-        <div className="absolute left-0 right-0 top-20 z-10 m-auto w-[340px] rounded-2xl bg-white p-5 pt-6">
+    <MainContentWrapper>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        noValidate={true}
+        className="h-full md:flex md:flex-col md:justify-between"
+      >
+        <MainContentBlock>
           <h1 className="mb-2 font-ubuntu text-2xl font-bold text-marineBlue">
             Pick add-ons
           </h1>
@@ -151,9 +160,9 @@ const FormAddOns = () => {
               ...register("customizableProfile"),
             }}
           />
-        </div>
+        </MainContentBlock>
 
-        <div className="absolute bottom-0 left-0 right-0 flex justify-between bg-white p-6">
+        <FooterDualButtonBlock>
           <NavLink
             to={RoutePath.STEP_2}
             className="flex items-center text-sm font-bold text-coolGray"
@@ -166,9 +175,9 @@ const FormAddOns = () => {
           >
             Next Step
           </button>
-        </div>
+        </FooterDualButtonBlock>
       </form>
-    </div>
+    </MainContentWrapper>
   );
 };
 
