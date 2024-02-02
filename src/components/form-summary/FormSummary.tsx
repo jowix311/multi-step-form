@@ -5,7 +5,7 @@ import {
   resetPlan,
   SelectPlan,
 } from "../../store/select-plan/select-plan.reducer.ts";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import thankYouIcon from "../../assets/icon-thank-you.svg";
 import { resetInfo } from "../../store/your-info/your-info.reducer.ts";
 import { resetAddOns } from "../../store/add-ons/add-ons.reducer.ts";
@@ -29,10 +29,19 @@ const FormSummary = () => {
   const dispatch = useAppDispatch();
   const handleConfirm = () => {
     setIsConfirmed(true);
-    dispatch(resetInfo());
-    dispatch(resetPlan());
-    dispatch(resetAddOns());
   };
+
+  useEffect(() => {
+    return () => {
+      //we place reset here since placing code below inside handle confirm causes a abrupt redirect to step 1
+      if (isConfirmed) {
+        dispatch(resetInfo());
+        dispatch(resetPlan());
+        dispatch(resetAddOns());
+      }
+    };
+  });
+
   const SummaryRowContainer = ({ children }: { children: React.ReactNode }) => {
     return <div className="pb-2">{children}</div>;
   };
