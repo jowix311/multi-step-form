@@ -106,19 +106,20 @@ Use this section to recap over some of your major learnings while working throug
       }
     }, [navigate, state]);
     ```
-
 - Learned Redux Toolkit to handle the state of the "forms", accessing the states between pages.
 
   - Learned to setup Redux Toolkit
   - Access store, dispatch, create update methods and registering reducers
 
-- Maybe used form validation library like Zod
+- Learned to fix Page Not Found with Vite and Netlify
+https://stackoverflow.com/questions/75386783/netlify-and-react-vite-netlify-says-page-not-found-upon-reloading-in-vite-and
+
 
 ### Continued development
 - Find and identify areas for optimization
 - Better component structure
 - Use validation libraries like Zod
-- Check for more styling errorss
+- Check for more styling errors
 
 ### Useful resources
 - Read the documentation for the libraries used.
