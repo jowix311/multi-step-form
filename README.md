@@ -73,8 +73,7 @@ Use this section to recap over some of your major learnings while working throug
     ```
 - Used React Hook Form library for creating form and validation
   - Leaned to use it with reusable React components for inputs, checkboxes and radio fields. (See input-field, input-checkbox-custom, and radio-custom folders)
-- Used React Router DOM library for creating routes.
-
+- Used React Router DOM library for creating routes and apply Singe Page Application
   - Learned to identify current by route and apply activate state styles on step indicators. This is done bu using useLocation();
 
     ```jsx
